@@ -1,4 +1,20 @@
 'use strict';
+const letterIntro = document.getElementById('letter-intro');
+const siteContent = document.getElementById('site-content');
+let letterTimer;
+function finishLetter(moveFocus = false) {
+  clearTimeout(letterTimer);
+  const hadFocus = letterIntro.contains(document.activeElement);
+  letterIntro.hidden = true;
+  siteContent.inert = false;
+  document.body.classList.remove('opening-letter');
+  if (moveFocus || hadFocus) document.getElementById('discover').focus({preventScroll:true});
+}
+letterIntro.hidden = false;
+siteContent.inert = true;
+document.body.classList.add('opening-letter');
+letterTimer = setTimeout(() => finishLetter(), 9950);
+document.getElementById('skip-letter').addEventListener('click', () => finishLetter(true));
 const invitation = document.getElementById('invitation');
 const reveal = document.getElementById('reveal');
 const video = document.getElementById('ultrasound');
