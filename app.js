@@ -88,23 +88,31 @@ document.getElementById('open-message').addEventListener('click', () => {
 function corkPop() {
   if (!soundContext) return;
   const now = soundContext.currentTime;
-  const oscillator = soundContext.createOscillator();
+  const duration = 0.48;
+  const buffer = soundContext.createBuffer(1, Math.ceil(soundContext.sampleRate * duration), soundContext.sampleRate);
+  const samples = buffer.getChannelData(0);
+  let smooth = 0;
+  for (let i = 0; i < samples.length; i++) {
+    const t = i / soundContext.sampleRate;
+    const noise = Math.random() * 2 - 1;
+    smooth = 0.72 * smooth + 0.28 * noise;
+    // Short cork friction, then a low hollow pressure release and airy decay.
+    const friction = t < 0.075 ? smooth * 0.12 * Math.sin(Math.PI * t / 0.075) : 0;
+    const u = Math.max(0, t - 0.075);
+    const attack = t < 0.075 ? 0 : Math.min(1, u / 0.003);
+    const body = Math.sin(2 * Math.PI * (185 * u + 8 * (1 - Math.exp(-u * 35)))) * 0.58 * Math.exp(-u * 33);
+    const resonance = Math.sin(2 * Math.PI * 420 * u) * 0.1 * Math.exp(-u * 24);
+    const air = smooth * 0.38 * Math.exp(-u * 30);
+    const tail = Math.min(1, (duration - t) / 0.02);
+    samples[i] = (friction + attack * (body + resonance + air)) * tail;
+  }
+  const source = soundContext.createBufferSource();
   const gain = soundContext.createGain();
-  oscillator.type = 'sine';
-  oscillator.frequency.setValueAtTime(700, now);
-  oscillator.frequency.exponentialRampToValueAtTime(140, now + 0.12);
-  gain.gain.setValueAtTime(0.001, now);
-  gain.gain.exponentialRampToValueAtTime(0.3, now + 0.008);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-  oscillator.connect(gain).connect(soundContext.destination);
-  oscillator.start(now); oscillator.stop(now + 0.2);
-  const buffer = soundContext.createBuffer(1, Math.floor(soundContext.sampleRate * 0.12), soundContext.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 3);
-  const noise = soundContext.createBufferSource();
-  const noiseGain = soundContext.createGain();
-  noise.buffer = buffer; noiseGain.gain.value = 0.12;
-  noise.connect(noiseGain).connect(soundContext.destination); noise.start(now);
+  source.buffer = buffer;
+  gain.gain.value = 0.65;
+  source.connect(gain).connect(soundContext.destination);
+  source.onended = () => { source.disconnect(); gain.disconnect(); };
+  source.start(now);
 }
 async function playMedia() {
   status.textContent = '';
