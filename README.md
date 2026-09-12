@@ -24,7 +24,7 @@ Toque na **rolha da garrafa** para ouvir o destampar e ver a carta sair. Depois 
 - `assets/glass-bottle.png`, `assets/cork.png` e `assets/message-scroll.png`: ilustrações da abertura, com laço dourado.
 - `assets/open-parchment.png`: papel aberto da revelação.
 
-Na abertura, **Ouvir o mar** ativa um ambiente de ondas sintetizado no navegador. Ele termina ao retirar a rolha. O botão permite iniciar o áudio com um gesto explícito, conforme as restrições de reprodução automática dos navegadores.
+Na entrada, **Toque para abrir sua mensagem** mostra a garrafa e ativa um ambiente de ondas sintetizado no navegador. **Silenciar o mar** permite interromper esse som. Ele termina ao retirar a rolha. O botão permite iniciar o áudio com um gesto explícito, conforme as restrições de reprodução automática dos navegadores.
 
 ## Dependências e configuração
 

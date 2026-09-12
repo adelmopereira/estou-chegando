@@ -44,8 +44,8 @@ function stopOcean() {
   oceanToggle.textContent = 'Ouvir o mar';
   oceanToggle.setAttribute('aria-pressed', 'false');
 }
-oceanToggle.addEventListener('click', async () => {
-  if (oceanSource) { stopOcean(); return; }
+async function startOcean() {
+  if (oceanSource || oceanToggle.disabled) return;
   oceanToggle.disabled = true;
   try {
     if (!ensureSound()) throw new Error('Audio unavailable');
@@ -69,10 +69,21 @@ oceanToggle.addEventListener('click', async () => {
     oceanSource.start();
     oceanToggle.textContent = 'Silenciar o mar';
     oceanToggle.setAttribute('aria-pressed', 'true');
-    oceanStatus.textContent = 'Uma mensagem embalada pelas ondas.';
+    oceanStatus.textContent = '';
   } catch (_) {
     oceanStatus.textContent = 'O som não iniciou. Toque novamente para tentar.';
   } finally { oceanToggle.disabled = false; }
+}
+oceanToggle.addEventListener('click', () => {
+  if (oceanSource) stopOcean();
+  else startOcean();
+});
+document.getElementById('open-message').addEventListener('click', () => {
+  // Resume the audio context directly from this first user gesture.
+  startOcean();
+  document.getElementById('welcome').hidden = true;
+  invitation.hidden = false;
+  cork.focus({preventScroll:true});
 });
 function corkPop() {
   if (!soundContext) return;
@@ -150,6 +161,7 @@ document.getElementById('restart').addEventListener('click', () => {
   cork.disabled = false; openingStatus.textContent = '';
   if (heartbeatGain) heartbeatGain.gain.setValueAtTime(0, soundContext.currentTime);
   status.textContent = '';
+  startOcean();
   document.getElementById('discover').focus({preventScroll:true});
   window.scrollTo({top:0, behavior:'instant'});
 });

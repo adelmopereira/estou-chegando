@@ -7,17 +7,20 @@
   <meta name="description" content="Tem uma surpresa esperando por você. Abra com o som ligado e um lugarzinho no coração.">
   <meta name="robots" content="noindex, nofollow">
   <title>Uma pequena surpresa</title>
-  <link rel="stylesheet" href="style.css?v=bottle-2">
-  <script src="app.js?v=bottle-2" defer></script>
+  <link rel="stylesheet" href="style.css?v=welcome-1">
+  <script src="app.js?v=welcome-2" defer></script>
 </head>
 <body>
   <div id="site-content">
   <div class="sky" aria-hidden="true"><span class="star s1">✧</span><span class="star s2">✦</span><span class="star s3">✧</span><span class="star s4">✧</span><span class="cloud c1">☁</span><span class="cloud c2">☁</span><span class="cloud c3">☁</span></div>
-  <header><span class="little-star" aria-hidden="true">✳</span> UM AMOR QUE CRESCE</header>
   <main>
-    <section id="invitation" class="invitation bottle-invitation" aria-labelledby="intro-title">
+    <section id="welcome" class="welcome" aria-label="Abrir sua mensagem">
+      <button id="open-message" class="primary" type="button">Toque para abrir sua mensagem <span aria-hidden="true">♡</span></button>
+      <p class="sound-hint">Prepare o coração e ligue o som.</p>
+    </section>
+    <section id="invitation" hidden class="invitation bottle-invitation" aria-labelledby="intro-title">
       <p class="eyebrow">UMA MENSAGEM CHEGOU ATÉ VOCÊ</p>
-      <h1 id="intro-title">Um pequeno segredo.<br><em>Um amor sem tamanho.</em></h1>
+      <h1 id="intro-title">Um destino certeiro.<br><em>Um amor sem tamanho.</em></h1>
       <div class="bottle-stage">
         <div class="bottle-assembly">
           <img class="message-scroll" src="assets/message-scroll.png" alt="Carta enrolada dentro da garrafa" width="160" height="300">
@@ -28,10 +31,9 @@
       </div>
       <p id="opening-status" class="opening-status" role="status"></p>
       <button id="ocean-toggle" class="ocean-toggle" type="button" aria-pressed="false">Ouvir o mar</button>
-      <p id="ocean-status" class="sound-hint" role="status">Toque para ouvir as ondas enquanto descobre a mensagem.</p>
+      <p id="ocean-status" class="sound-hint" role="status"></p>
     </section>
     <section id="reveal" class="reveal" hidden aria-labelledby="reveal-title">
-      <p class="eyebrow">JÁ TEM UM NOVO AMOR BATENDO POR AQUI</p>
       <h1 id="reveal-title" tabindex="-1">Oi, família.<br><em>Estou chegando!</em></h1>
       <div class="keepsake">
         <div class="video-wrap"><video id="ultrasound" loop muted playsinline preload="none" aria-label="Ultrassom do bebê, trecho de oito segundos"><source src="assets/ultrassom-sem-audio.mp4" type="video/mp4"></video><div id="video-loading" class="video-loading">Preparando nosso primeiro encontro…</div></div>

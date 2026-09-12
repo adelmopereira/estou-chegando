@@ -4,7 +4,7 @@
 .bottle-invitation{padding-top:38px}
 .bottle-invitation h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.22}
 .bottle-invitation .eyebrow{margin-bottom:16px}
-.bottle-stage{position:relative;width:min(330px,76vw);height:380px;margin:12px auto 0}
+.bottle-stage{position:relative;width:min(330px,76vw);height:380px;margin:70px auto 0}
 .bottle-assembly{position:absolute;inset:0;transform-origin:50% 90%;animation:bottle-sway 5s ease-in-out infinite}
 .glass-bottle{position:absolute;left:15%;top:10%;width:70%;height:88%;object-fit:contain;z-index:2;pointer-events:none}
 .message-scroll{position:absolute;left:27.5%;top:35%;width:45%;height:55%;object-fit:contain;z-index:1;transform:rotate(10deg);pointer-events:none}
@@ -29,7 +29,7 @@
 @keyframes scroll-release{0%{transform:translateY(0) rotate(10deg);opacity:.9}45%{transform:translateY(-150px) rotate(0);opacity:1}72%{transform:translateY(-185px) rotate(-5deg) scale(1.6);opacity:1}100%{transform:translateY(-195px) rotate(-5deg) scale(2.4);opacity:0}}
 @keyframes bottle-fade{to{opacity:0;transform:translateY(12px)}}
 @keyframes intro-fade{to{opacity:0}}
-@media(max-width:600px){.bottle-invitation{padding-top:30px}.bottle-invitation h1{font-size:clamp(1.8rem,7.2vw,2.6rem)}.bottle-stage{height:340px;width:280px;max-width:80vw;margin-top:24px}.bottle-hint{left:69%;width:90px;top:-5%;font-size:.8rem}.bottle-invitation .eyebrow{font-size:.6rem}.opening-status{font-size:.8rem}.bottle-invitation .sound-hint{font-size:.75rem}}
+@media(max-width:600px){.bottle-invitation{padding-top:30px}.bottle-invitation h1{font-size:clamp(1.8rem,7.2vw,2.6rem)}.bottle-stage{height:340px;width:280px;max-width:80vw;margin-top:70px}.bottle-hint{left:69%;width:90px;top:-5%;font-size:.8rem}.bottle-invitation .eyebrow{font-size:.6rem}.opening-status{font-size:.8rem}.bottle-invitation .sound-hint{font-size:.75rem}}
 @media(prefers-reduced-motion:reduce){.bottle-assembly,.bottle-hint span,.uncorking .cork-button,.uncorking .message-scroll,.uncorking .glass-bottle,.uncorking>h1,.uncorking>.eyebrow,.uncorking>.sound-hint{animation:none!important}}
 
 /* The opened message uses the same illustrated parchment as the scroll. */
@@ -44,3 +44,5 @@
 .reveal .eyebrow{font-size:.65rem;letter-spacing:.14em}
 .reveal .reveal-copy{font-family:'Lora',Georgia,serif;font-size:1rem}
 @media(max-width:600px){.reveal{margin:18px -12px 0;padding:54px 24px 55px}.reveal h1{font-size:2.4rem}.reveal .eyebrow{font-size:.57rem;letter-spacing:.1em}.reveal .caption{font-size:.72rem}.reveal .reveal-copy{font-size:.85rem}.reveal .video-wrap{border-width:3px}}
+
+.welcome{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 0}.welcome .primary{max-width:100%;line-height:1.5;text-align:center}.bottle-invitation{padding-top:60px}#ocean-status:empty{display:none}
