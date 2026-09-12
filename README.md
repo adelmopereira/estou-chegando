@@ -12,7 +12,7 @@ python -m http.server 8000 --bind 127.0.0.1
 
 Abra http://127.0.0.1:8000 no navegador. Para encerrar o servidor, pressione Ctrl+C no terminal.
 
-Clique em **Descobrir a surpresa** para iniciar o vídeo e o áudio. O som depende da interação do usuário e das permissões de reprodução do navegador.
+Toque na **rolha da garrafa** para ouvir o destampar e ver a carta sair. Depois da animação, o ultrassom e as batidas começam em loop. O som depende da interação do usuário e das permissões de reprodução do navegador. O efeito de destampar é sintetizado com Web Audio; a trilha das batidas usa o arquivo enviado pela família. A preferência de movimento reduzido encurta a abertura.
 
 ## Estrutura
 
@@ -21,6 +21,10 @@ Clique em **Descobrir a surpresa** para iniciar o vídeo e o áudio. O som depen
 - `app.js`: revelação e controles de reprodução.
 - `assets/ultrassom-sem-audio.mp4`: vídeo.
 - `assets/batidas.mp3`: áudio.
+- `assets/glass-bottle.png`, `assets/cork.png` e `assets/message-scroll.png`: ilustrações da abertura, com laço dourado.
+- `assets/open-parchment.png`: papel aberto da revelação.
+
+Na abertura, **Ouvir o mar** ativa um ambiente de ondas sintetizado no navegador. Ele termina ao retirar a rolha. O botão permite iniciar o áudio com um gesto explícito, conforme as restrições de reprodução automática dos navegadores.
 
 ## Dependências e configuração
 
