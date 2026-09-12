@@ -46,3 +46,10 @@
 @media(max-width:600px){.reveal{margin:18px -12px 0;padding:54px 24px 55px}.reveal h1{font-size:2.4rem}.reveal .eyebrow{font-size:.57rem;letter-spacing:.1em}.reveal .caption{font-size:.72rem}.reveal .reveal-copy{font-size:.85rem}.reveal .video-wrap{border-width:3px}}
 
 .welcome{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 0}.welcome .primary{max-width:100%;line-height:1.5;text-align:center}.bottle-invitation{padding-top:60px}#ocean-status:empty{display:none}
+
+/* Soft painted seaside scenery stays behind the message at every step. */
+.seaside{position:fixed;inset:0;pointer-events:none;background:#f7f3e9 url('assets/seaside-background.png') center bottom/100% 100% no-repeat;z-index:0}
+body:before{border-color:#769c9238}
+.welcome .sound-hint{color:#425e55}
+.bottle-invitation .eyebrow,.bottle-invitation .sound-hint,footer{color:#425e55}
+@media(max-width:700px){.seaside{background-size:100% auto}.seaside:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,#f7f3e9 0%,transparent 65%);pointer-events:none}}
